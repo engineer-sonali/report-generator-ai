@@ -1,17 +1,32 @@
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import sessionmaker
+
+# DATABASE_URL = "postgresql://postgres:sonali123@localhost:5433/report_db"
+
+
+# engine = create_engine(DATABASE_URL)
+# SessionLocal = sessionmaker(bind=engine)
+
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 
-# Use DATABASE_URL from environment, fallback to local for development
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://postgres:sonali123@localhost:5433/report_db"
+# Load environment variables from .env
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set in environment variables")
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,   # prevents stale connections
 )
 
-# Fix for SQLAlchemy 2.0+ with PostgreSQL
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
-SessionLocal = sessionmaker(bind=engine)
-
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)

@@ -53,11 +53,17 @@ def _generate_clean_report(file_ids: list[int], db: Session) -> dict:
 # ------------------ JSON API ------------------ #
 @router.get(
     "/",
-    summary="Generate report (JSON)",
-    description="Returns a structured report as JSON"
+    summary="Generate analytical report as JSON",
+    description=(
+        "Generates a structured analytical report in JSON format using previously "
+        "uploaded CSV and/or image files. The response includes key metrics, "
+        "identified trends and correlations, actionable recommendations, and an "
+        "executive summary. This endpoint is intended for programmatic consumption "
+        "or further processing."
+    ),
 )
 def generate_report_api(
-    file_ids: list[int] = Query(..., description="List of uploaded file IDs"),
+    file_ids: list[int] = Query(..., description="List of uploaded file IDs to include in the report"),
     db: Session = Depends(get_db),
 ):
     clean_report = _generate_clean_report(file_ids, db)
@@ -65,7 +71,14 @@ def generate_report_api(
 
 
 # ------------------ PDF API ------------------ #
-@router.get("/pdf")
+@router.get("/pdf",
+              summary="Generate analytical report as PDF",
+    description=(
+        "Generates a professionally formatted PDF report based on the uploaded CSV "
+        "and/or image files. The PDF includes an executive summary, key metrics, "
+        "identified trends and correlations, and actionable recommendations. "
+        "The generated file is returned as a downloadable PDF."
+    ))
 def generate_report_pdf_api(
     file_ids: list[int] = Query(...),
     db: Session = Depends(get_db),
