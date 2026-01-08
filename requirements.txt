@@ -1,0 +1,24 @@
+# API
+fastapi==0.128.0
+uvicorn==0.40.0
+python-multipart==0.0.21
+
+# Data
+pandas==2.3.3
+pillow==12.1.0
+
+# LangChain + OpenAI
+langchain==1.2.0
+langchain-core==1.2.6
+langchain-openai==1.1.6
+openai==2.14.0
+
+# Database
+SQLAlchemy==2.0.45
+psycopg2-binary==2.9.11
+
+# Vector DB
+qdrant-client==1.16.2
+
+# PDF
+reportlab==4.4.7

@@ -1,0 +1,13 @@
+month,region,product,revenue,units_sold,marketing_spend
+2024-01,North,Product A,120000,450,15000
+2024-01,South,Product A,95000,380,12000
+2024-01,East,Product A,87000,340,10000
+2024-01,West,Product A,110000,420,14000
+2024-02,North,Product A,130000,480,16000
+2024-02,South,Product A,98000,390,12500
+2024-02,East,Product A,91000,360,10500
+2024-02,West,Product A,115000,430,14500
+2024-03,North,Product A,145000,520,18000
+2024-03,South,Product A,105000,410,13500
+2024-03,East,Product A,97000,380,11500
+2024-03,West,Product A,125000,460,15500
