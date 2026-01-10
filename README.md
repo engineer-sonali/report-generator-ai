@@ -1,82 +1,105 @@
-Vision-Language Report Generator
-=================================
+# AI Report Generator
 
-Overview
---------
-Small FastAPI app that analyzes CSVs and images and generates business reports using OpenAI and local image models.
+AI Report Generator is a FastAPI-based backend application that generates structured **business analytics reports in PDF format** using uploaded CSV files and images. The system combines traditional data analytics with AI-powered insights and vector-based semantic search.
 
-Quick Start (local)
--------------------
-Prereqs:
-- Python 3.11
-- pip
+---
 
-1. Install dependencies
+## 🚀 Tech Stack
 
-```bash
-pip install -r requirements.txt
-```
+### Backend
+- **FastAPI** – High-performance Python web framework
+- **Uvicorn** – ASGI server for FastAPI
+- **Pydantic** – Data validation and request/response schemas
 
-2. Create environment variables (see `.env.example`)
+### Data Storage
+- **PostgreSQL (Local)** – Persistent storage for:
+  - Uploaded file metadata
+  - Report generation history
+  - Structured analytics results
+- **SQLAlchemy** – ORM for database interaction
 
-3. Run locally (dev)
+### Vector Database
+- **Qdrant** – Vector database for:
+  - Storing text embeddings
+  - Semantic search over reports and CSV content
+  - Similarity-based retrieval during report generation
 
-```bash
-uvicorn app.main:app --reload
-```
+### Data Processing
+- **Pandas** – CSV parsing, cleaning, and analytics
+- **NumPy** – Numerical computations
+- **Python-Multipart** – File upload handling
 
-Production start commands
--------------------------
-- Use Procfile (recommended for Render): the Procfile contains `web: uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
-- Or explicit commands:
+### AI / NLP
+- **LangChain** – LLM workflow orchestration
+- **OpenAI API** – Natural language report generation
+- **Sentence-Transformers** – Text embedding generation
+- **Torch (CPU)** – Backend for embedding models
 
-Dev (hot-reload):
-```bash
-uvicorn app.main:app --reload
-```
+### Document Generation
+- **PDF generation utilities (ReportLab or equivalent)** – PDF creation
+- **Pillow (PIL)** – Image preprocessing and embedding
 
-Production (recommended):
-```bash
-# install gunicorn then run
-gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
-```
+### Configuration & DevOps
+- **python-dotenv** – Environment variable management
+- **GitHub** – Version control
+- **Render (attempted)** – Cloud deployment platform
 
-Environment Variables
----------------------
-Required:
-- `DATABASE_URL` — PostgreSQL connection string (e.g. `postgresql://user:pass@host:5432/dbname`)
-- `OPENAI_API_KEY` — OpenAI API key for report generation
+---
 
-Optional (only if used):
-- `QDRANT_HOST`, `QDRANT_PORT`, `QDRANT_API_KEY`
-- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_S3_BUCKET`, `AWS_REGION`
+## 🧠 Architecture Overview
 
-`.env` example is provided in `.env.example`.
+- **PostgreSQL** is used for structured, relational data:
+  - File references
+  - Report metadata
+  - Processing status
+- **Qdrant** stores high-dimensional embeddings generated from:
+  - CSV textual content
+  - AI-generated summaries
+  - Image-derived text (if applicable)
+- **LangChain** retrieves relevant vectors from Qdrant to enrich report generation with contextual data.
 
-Deploying to Render
--------------------
-1. Create a Render account and connect your GitHub repo.
-2. Click New → Web Service and choose this repo.
-3. Branch: `master` (or your preferred branch).
-4. Leave Build and Start commands blank so Render uses the `Procfile`.
-5. Add environment variables in the Render dashboard (`DATABASE_URL`, `OPENAI_API_KEY`, etc.).
-6. (Optional) Create a managed PostgreSQL on Render and paste its `DATABASE_URL` into the service env vars.
-7. Create the service and monitor build logs. The app will be available at the provided URL; API docs at `/docs`.
+---
 
-Testing & Troubleshooting
--------------------------
-- Check `/docs` for interactive API docs.
-- Use the Render service logs for build/runtime errors.
-- Locally, run `uvicorn app.main:app --reload` and watch stdout for errors.
+## 📄 Types of Reports Generated (PDF)
 
-Commit & Push
--------------
-After reviewing, commit the README and push:
+### 1️⃣ Business Analytics Reports
+- CSV-based statistical summaries
+- Aggregated metrics and trends
+- AI-generated interpretations
 
-```bash
-git add README.md
-git commit -m "Add README with setup and deployment instructions"
-git push origin master
-```
+### 2️⃣ Semantic Insight Reports
+- Context-aware summaries powered by vector search
+- Similarity-based insights retrieved from Qdrant embeddings
 
-Need help automating the commit/push or adjusting the Procfile/start command? Tell me which option you prefer and I will apply it.
+### 3️⃣ Image + Data Reports
+- Embedded charts and images
+- AI explanations linked to stored embeddings
+
+### 4️⃣ Automated Executive Reports
+- Natural-language summaries
+- Actionable recommendations
+
+---
+
+## 🖼️ Sample PDF Screenshots
+
+### 📊 Analytics Summary Page
+![Analytics Report Sample](assets/sample_analytics_report.png)
+
+### 📈 Visual + AI Explanation Page
+![Image Report Sample](assets/sample_image_report.png)
+
+> Screenshots were generated locally during development.
+
+---
+
+## 📂 Supported Input Formats
+- **CSV files**
+- **Image files (PNG, JPG)**
+
+---
+
+## 📤 Output Format
+- **PDF (.pdf)** – Shareable, presentation-ready reports
+
+
