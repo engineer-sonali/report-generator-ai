@@ -6,6 +6,7 @@ import os
 
 # Local embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
+#size = 384
 
 # Persistent Qdrant storage
 QDRANT_PATH = "./qdrant_data"
@@ -17,7 +18,9 @@ COLLECTION = "documents"
 
 # Create collection ONLY if it doesn't exist
 existing = [c.name for c in qdrant.get_collections().collections]
-
+ 
+#text-embedding-3-small (OpenAI) size is 1536
+#Your vector database dimension MUST match your embedding model dimension
 if COLLECTION not in existing:
     qdrant.create_collection(
         collection_name=COLLECTION,
@@ -44,7 +47,8 @@ def embed_and_store(text: str) -> str:
 
     return vector_id
 
-
+# Converts query into embedding
+# Searches Qdrant for most similar documents
 def search_similar(query: str, limit: int = 5):
     query_embedding = model.encode(query).tolist()
 

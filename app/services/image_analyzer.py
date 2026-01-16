@@ -1,8 +1,10 @@
-from transformers import BlipProcessor, BlipForConditionalGeneration
-from PIL import Image
+#images to text captions using BLIP model
+from transformers import BlipProcessor, BlipForConditionalGeneration #for image captioning
+from PIL import Image #to load images
 
+#pretrained vision-language model from Hugging Face
 processor = BlipProcessor.from_pretrained(
-    "Salesforce/blip-image-captioning-base"
+    "Salesforce/blip-image-captioning-base"   
 )
 model = BlipForConditionalGeneration.from_pretrained(
     "Salesforce/blip-image-captioning-base"

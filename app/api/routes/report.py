@@ -38,8 +38,8 @@ def _generate_clean_report(file_ids: list[int], db: Session) -> dict:
             detail="No supported files found (CSV or image required)"
         )
 
-    context = build_context(image_files, csv_files)
-    raw_report = generate_report(context)
+    context = build_context(image_files, csv_files)  #Build context from files
+    raw_report = generate_report(context)   #Generate raw report from context
 
     try:
         return clean_llm_json(raw_report)
@@ -83,14 +83,13 @@ def generate_report_pdf_api(
     file_ids: list[int] = Query(...),
     db: Session = Depends(get_db),
 ):
-    clean_report = _generate_clean_report(file_ids, db)
+    clean_report = _generate_clean_report(file_ids, db) #generate clean report
 
-    pdf_dir = Path("app/storage/reports")
-    pdf_dir.mkdir(parents=True, exist_ok=True)
+    pdf_dir = Path("app/storage/reports")  #creating directory for reports
+    pdf_dir.mkdir(parents=True, exist_ok=True) #ensure directory exists
 
-    pdf_path = pdf_dir / f"report_{uuid.uuid4().hex}.pdf"
+    pdf_path = pdf_dir / f"report_{uuid.uuid4().hex}.pdf"  #Generate unique filename
 
-    # ✅ FIX HERE
     generate_report_pdf(clean_report, str(pdf_path))
 
     return FileResponse(

@@ -2,6 +2,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+#Makes output more deterministic and analytical, less creative
 
 prompt = PromptTemplate(
     input_variables=["context"],

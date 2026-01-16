@@ -15,3 +15,21 @@ def analyze_csv(csv_path: str) -> str:
         summary.append(desc.to_string())
 
     return "\n".join(summary)
+
+# For each numeric column:
+
+# count
+
+# mean
+
+# standard deviation
+
+# min
+
+# 25th percentile
+
+# median (50%)
+
+# 75th percentile
+
+# max
