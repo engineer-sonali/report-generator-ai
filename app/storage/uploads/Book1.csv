@@ -1,0 +1,19 @@
+﻿Name,Email,Password,Some ID,Transaction ID,Transaction Amount,Account Balance,Account Type,Bank Name,Phone Number
+User0,user0@example.com,BA4PrOOa,2607,8AQCV0NT9LSO,4998.96,16976.57,Checking,Bank of Random,12982778986
+User1,user1@example.com,7aAxGrBm,3458,LQHDTZ1GXZAK,1131.54,10339.98,Business,Secure Finance,17589361485
+User2,user2@example.com,VcOB5CGg,3428,FD4Q8RUS5BMY,566.64,19052.27,Business,Trusty Bank,13353514785
+User3,user3@example.com,yb68h3Zd,9095,6HWIB4EZU8FU,973.97,2920.73,Business,Trusty Bank,19935955743
+User4,user4@example.com,56VYvDKI,7279,DBO5K9RV0RW4,4858.69,11065.31,Savings,Secure Finance,15943541102
+User5,user5@example.com,42dOlB7J,7130,8UKLZEB2IQEP,469.44,13954.44,Checking,Secure Finance,19317455861
+User6,user6@example.com,ipN7hLeK,4724,YMJBDJFS8KY0,3296.81,7846.14,Checking,Trusty Bank,18685117415
+User7,user7@example.com,m9n6ya3a,7736,ANYHP1JIWJS5,1058.93,1809.42,Business,Trusty Bank,12704624153
+User8,user8@example.com,hIgJjWiT,1488,27BDYO7I3X6M,3277.67,13597.1,Business,Trusty Bank,12462968847
+User9,user9@example.com,65wmedu9,9859,K51XFXTHKO09,31.86,18896.25,Checking,Bank of Random,15944934087
+User10,user10@example.com,OC1zpuMJ,2652,KCD209K3LO3A,3541.84,18263.13,Checking,Trusty Bank,13813099810
+User11,user11@example.com,m82Jl3b6,6448,WOWJUKMIGCND,2133.54,12931.26,Checking,Money Matters,13572284906
+User12,user12@example.com,R3GVfivP,8632,FU42VY9KG4DW,3555.01,8763.69,Savings,Trusty Bank,16007122659
+User13,user13@example.com,dLtgFv2l,1052,861O5RTFVPG2,1021.07,5173.82,Business,Secure Finance,12616259413
+User14,user14@example.com,HPzR2Idr,6363,18X8LLIICCFE,3546.9,9459.76,Business,Money Matters,16755507101
+User15,user15@example.com,yH58OyUz,3539,TRHVB33AZPFS,1922.34,16185.23,Checking,Money Matters,13051293244
+User16,user16@example.com,9XBNm6H7,2355,I637T2YGTO4T,4386.92,12730.56,Checking,Trusty Bank,18569434419
+User17,user17@example.com,X1jpgOoK,9954,V0OBL6GDFBYQ,2569.88,18864.54,Checking,Bank of Random,13394574026
